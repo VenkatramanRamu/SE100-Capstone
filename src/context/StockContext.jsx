@@ -3,9 +3,7 @@ import PropTypes from "prop-types";
 
 export const StockContext = createContext();
 
-
 const apiKey = "61O9Q36XBXF6BBFC";  
-
 
 export const StockProvider = ({ children }) => {
   const [stockList, setStockList] = useState([]);
