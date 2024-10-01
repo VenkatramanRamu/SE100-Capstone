@@ -30,21 +30,21 @@ const StockForm = () => {
     <form onSubmit={handleSubmit} className="mb-4">
       <input
         type="text"
-        placeholder="Enter Stock Symbol"
+        placeholder="Stock Symbol"
         className="border px-2 py-1 mr-2"
         value={stockSymbol}
         onChange={(e) => setStockSymbol(e.target.value.toUpperCase())}
       />
       <input
         type="number"
-        placeholder="Enter Quantity"
+        placeholder="Quantity"
         className="border px-2 py-1 mr-2"
         value={quantity}
         onChange={(e) => setQuantity(e.target.value)}
       />
       <input
         type="number"
-        placeholder="Enter Purchase Price per stock"
+        placeholder="Purchase Price"
         className="border px-2 py-1 mr-2"
         value={purchasePrice}
         onChange={(e) => setPurchasePrice(e.target.value)}
