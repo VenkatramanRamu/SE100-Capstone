@@ -1,19 +1,19 @@
 import { useContext } from "react";
 import { StockContext } from "./context/StockContext";  
 import StockForm from "./components/StockForm";
-import stockTradingIcon from './assets/stock trading icon.png'; // Import the image
+import stockTradingIcon from './assets/stock trading icon.png'; 
 
 const App = () => {
   const { stockList } = useContext(StockContext);
 
   return (
-    <div className="container mx-auto p-4 pt-24"> {/* Changed from mt-12 to pt-24 for larger padding */}
+    <div className="container mx-auto p-4 pt-24"> 
       {/* Image and Title */}
       <div className="flex items-center mb-4">
         <img
           src={stockTradingIcon}
           alt="Stock Calculator Icon"
-          className="w-12 h-12 mr-2" // Adjust the size of the image
+          className="w-12 h-12 mr-2" 
         />
 
       </div>

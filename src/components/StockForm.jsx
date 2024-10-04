@@ -1,11 +1,12 @@
+// eslint-disable-next-line no-unused-vars
 import React, { useState, useContext } from "react";
-import { StockContext } from "../context/StockContext";  // Path to context
+import { StockContext } from "../context/StockContext";  
 
 const StockForm = () => {
   const [stockSymbol, setStockSymbol] = useState("");
   const [quantity, setQuantity] = useState("");
   const [purchasePrice, setPurchasePrice] = useState("");
-  const [errorMessage, setErrorMessage] = useState("");  // State for error message
+  const [errorMessage, setErrorMessage] = useState("");  
 
   const { addStock } = useContext(StockContext);
 
@@ -23,9 +24,9 @@ const StockForm = () => {
     });
 
     if (error) {
-      setErrorMessage(error);  // Set error message if invalid symbol
+      setErrorMessage(error);  
     } else {
-      setErrorMessage("");  // Clear error message on success
+      setErrorMessage("");  
       setStockSymbol("");
       setQuantity("");
       setPurchasePrice("");
