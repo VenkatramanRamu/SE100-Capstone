@@ -8,7 +8,6 @@ const apiKey = "3YN1LH0DG485K63G";
 export const StockProvider = ({ children }) => {
   const [stockList, setStockList] = useState([]);
 
-
   const fetchStockPrice = useCallback(async (symbol) => {
     try {
       const response = await fetch(
@@ -16,30 +15,27 @@ export const StockProvider = ({ children }) => {
       );
       const data = await response.json();
 
-            if (data["Global Quote"] && data["Global Quote"]["05. price"]) {
+      if (data["Global Quote"] && data["Global Quote"]["05. price"]) {
         return parseFloat(data["Global Quote"]["05. price"]);
       } else if (data["Note"]) {
- 
-        alert("API limit reached. Please wait and try again.");
-        return null;
+        return "API limit reached. Please wait and try again.";
       } else {
-
-        console.error(`Invalid symbol: ${symbol}. API response:`, data);
-        return null;
+        return `Invalid stock symbol: ${symbol}.`;
       }
     } catch (error) {
-      console.error("Error fetching stock price:", error);
-      return null;
+      console.error("Error fetching stock price:", error); 
+      return "Error fetching stock price. Please try again.";
     }
   }, [apiKey]);
 
   const addStock = async (newStock) => {
     const currentPrice = await fetchStockPrice(newStock.stockSymbol);
 
-    if (currentPrice !== null) {
-          setStockList([...stockList, { ...newStock, currentPrice }]);
+    if (typeof currentPrice === "string") {
+      return currentPrice;  
     } else {
-           console.log(`Invalid stock symbol: ${newStock.stockSymbol} was ignored.`);
+      setStockList([...stockList, { ...newStock, currentPrice }]);
+      return null;
     }
   };
 
